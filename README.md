@@ -18,7 +18,8 @@ python manage.py migrate
 sqlite3 db.sqlite3
 ```
 
-> **배포방법**
+> **run**
 > 
 ```jsx
+python manage.py runserver
 ```
