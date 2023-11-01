@@ -20,7 +20,6 @@ from .views import SignUpAPI, SignInAPI, LabelAPI
 app_name = 'account'
 
 urlpatterns = [
-    path('', SignUpAPI.as_view()),
     path('signup', SignUpAPI.as_view()),
     path('signin', SignInAPI.as_view()),
     path('label', LabelAPI.as_view()),
