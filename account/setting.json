@@ -1,0 +1,6 @@
+{
+    "FILENAME": "secret.json",
+    "SECRET_KEY": "django-insecure-wwal7jl6rd=a3pc9l^9r+%=br1sni1)glzgd8_+chmsr)k*56d",
+    "DATABASES_HOST": "127.0.0.1",
+    "PORT": "8080"
+}
