@@ -91,6 +91,11 @@ class LabelAPI(View):
         try:
             if not Account.objects.filter(id=data['account_id']).exists():
                 return JsonResponse({"message": "NOT_EXISTS_ID"}, status=400)
+            if Label.objects.filter(account_id=data['account_id'], name=data['name']).exists():
+                # if already exists, pass
+                label_data = Label.objects.filter(
+                    account_id=data['account_id']).values()
+                return JsonResponse({'labels': list(label_data)}, status=200)
             # generate random color_code
             color_code = "#" + \
                 "".join([random.choice("0123456789ABCDEF") for j in range(6)])
@@ -101,7 +106,11 @@ class LabelAPI(View):
             ).save()
             label_data = Label.objects.filter(
                 account_id=data['account_id']).values()
-            return JsonResponse({'labels': list(label_data)}, status=200)
+            return JsonResponse({'labels': list(label_data), 'created_label': {
+                'account_id': data['account_id'],
+                'name': data['name'],
+                'color_code': color_code
+            }}, status=200)
         except KeyError:
             return JsonResponse({"message": "INVALID_KEYS"}, status=400)
 
